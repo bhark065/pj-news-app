@@ -13,9 +13,20 @@ const NewsApp = function(props) {
             setTimeout(() => {
                 console.log(data.articles)
                 setArticles(data.articles)
-            }, 3000)
+            }, 2000)
         })
+    }, []);
+
+    // API로 요청 보내는 코드 추가
+    useEffect(() => {
+        fetch("/api/users")
+            .then(res => res.json())
+            .then(json => {
+                console.log(json)
+            })
     }, [])
+
+    // if(loading) return <h1>뉴스 기사를 불러오는 중입니다.</h1>
 
     return (
         <div className={newsAppStyle['news_app']}>
